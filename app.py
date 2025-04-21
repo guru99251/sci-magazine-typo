@@ -9,6 +9,8 @@ def serve_index():
 
 @app.route('/style.css')
 def serve_css():
+
+    
     return send_from_directory('.', 'style.css')
 
 @app.route('/script.js')
