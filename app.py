@@ -10,7 +10,7 @@ def serve_index():
 @app.route('/style.css')
 def serve_css():
 
-    
+
     return send_from_directory('.', 'style.css')
 
 @app.route('/script.js')
@@ -19,5 +19,5 @@ def serve_js():
 
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 3000))
+    port = int(os.environ.get("PORT", 4000))
     app.run(host='0.0.0.0', port=port)
