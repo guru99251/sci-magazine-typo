@@ -1,0 +1,123 @@
+/* 기본 초기화 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'BookkGothic-Bd';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkGothic-Bd.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BookkMyungjo-Bd';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  font-family: 'BookkGothic-Bd', sans-serif;
+  background-color: #f9f9f9;
+  color: #222;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  letter-spacing: -0.2px;
+}
+
+.scroll-container {
+  width: 100vw;
+  min-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 3rem 2rem;
+}
+
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  margin-bottom: 6rem;
+}
+
+.image-box {
+  flex: 1 1 35%;
+  display: flex;
+  align-items: stretch;
+}
+
+.image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  filter: saturate(75%);
+}
+
+
+.text-box {
+  flex: 1 1 65%;
+  max-width: 880px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 3rem;
+}
+
+
+.section:first-child {
+  min-height: 80vh;    
+}
+
+
+h1 {
+  font-family: 'BookkMyungjo-Bd', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+h2 {
+  font-family: 'BookkMyungjo-Bd', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin: 1.5rem 0 0.7rem;
+  font-weight: 500;
+}
+
+.sub-title {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+p {
+  margin-bottom: 1.2rem;
+  word-break: keep-all;
+}
+
+.formula {
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.035);
+  padding: 0.8rem 1.2rem;
+  font-size: 1.25rem;
+  font-family: 'BookkGothic-Bd', monospace;
+  text-align: center;
+  margin: 1rem auto; 
+  border-radius: 8px;
+  color: #111;
+}
+
+
+
+
+

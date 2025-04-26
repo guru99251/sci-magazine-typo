@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>김현진</title>
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+  <style>
+    body { margin: 0; font-family: 'Pretendard-Regular', sans-serif; overflow-x: hidden; background: linear-gradient(to bottom, #ffffff, #f0f8ff); transition: background 1s ease; }
+    header { position: fixed; top: 0; width: 100%; height: 60px; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: bold; z-index: 1000; }
+    .progress-bar { position: fixed; top: 60px; left: 0; height: 4px; background: #1E90FF; width: 0; z-index: 1000; transition: width 0.25s; }
+    .container { display: flex; height: calc(100vh - 60px); margin-top: 60px; }
+    .left-pane { flex: 1; background-color: #000; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .left-pane img { max-width: 90%; max-height: 90%; object-fit: contain; position: absolute; opacity: 0; transition: opacity 1s ease-in-out; }
+    .left-pane img.active { opacity: 1; }
+    .right-pane { flex: 1; overflow-y: scroll; padding: 60px 40px; box-sizing: border-box; background: #fff; }
+    
+    h1 {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    h1 + p {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 40px;
+    }
+    h2 {
+      font-size: 28px;
+      font-weight: bold;
+      margin-top: 80px;
+      margin-bottom: 20px;
+      color: #1E90FF;
+    }
+    p {
+      font-size: 15.5px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .highlight {
+      color: #1E90FF;
+      font-weight: bold;
+    }
+    .equation {
+      font-family: 'Georgia', serif;
+      font-size: 28px;
+      font-weight: 700;
+      margin: 40px 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<header>Typography</header>
+<div class="progress-bar" id="progress-bar"></div>
+<div class="container">
+<div class="left-pane" id="photo-container">
+  <img class="photo active" src="image1.jpg" alt="우주 이미지 1">
+  <img class="photo" src="image2.jpg" alt="우주 이미지 2">
+  <img class="photo" src="image3.jpg" alt="우주 이미지 3">
+  <img class="photo" src="image4.jpg" alt="우주 이미지 4">
+  <img class="photo" src="image5.jpg" alt="우주 이미지 5">
+</div>
+<div class="right-pane" id="content">
+
+<h1>빛과 암흑물질: 우주를 비추는 두 실마리</h1>
+<p>가시 세계를 밝히고, 숨은 질서를 해독하다</p>
+
+<h2>Ⅰ. 서론 — 관측의 창과 우주의 그림자</h2>
+<p>빛은 우리가 우주를 이해할 수 있는 유일한 창이다. 하지만 이 창으로 보이는 물질은 전체의 5%뿐이며, 나머지는 어둠 속에 숨겨져 있다. 우리는 ‘빛’을 분석하여 이 어둠을 역으로 추적할 수 있다. 본 글은 빛의 본질을 짚고, 그 빛이 어떻게 암흑물질이라는 보이지 않는 실체를 포착하는 데 활용되는지를 설명한다.</p>
+
+<h2>Ⅱ. 빛의 과학 — 파동·입자 이중적 춤</h2>
+<p><strong>1. 파동과 입자: 빛의 두 얼굴 | 이중성이 열어준 양자혁명</strong></p>
+<p>양자물리학은 빛이 입자이자 파동이라는 이중적 성격을 지녔음을 보여준다. 이는 현대 광기술의 토대가 되었을 뿐 아니라, 관측 그 자체가 현실에 영향을 줄 수 있다는 사실을 시사한다. 이 개념은 나중에 암흑물질의 흔적을 분석하는 데에도 중요한 역할을 한다. 빛은 전자기 복사선의 한 형태이지만, 두 개의 얼굴을 지닌다. 좁은 틈 두 개를 통과할 때 나타나는 간섭 무늬는 파동이 서로 겹치며 드러내는 굴곡이다. 그러나 금속판 위로 쏘아 올린 자외선이 전자를 튀겨내는 광전효과는 빛이 양자화된 입자—광자—로 불연속적인 에너지를 전달함을 증명했다. 막스 플랑크와 아인슈타인은 이를 바탕으로 양자혁명의 물꼬를 텄고, 레이저·반도체·광섬유 기술은 모두 이 이론적 토대 위에 구축됐다. 우리는 파동 위에 서서 입자를 세며 정보를 저장하고 에너지를 운반하며, 관측 행위가 계 자체를 바꿀 수 있음을 깨달았다. 이처럼 한 줄기 빛은 실험실과 우주를 잇는 다리다.</p>
+<div class="equation">E = h\\nu</div>
+
+<p><strong>2. 팽창하는 우주를 비추는 빛 | 적색편이가 들려주는 시간 여행</strong></p>
+<p>빛은 단지 입자나 파동 이상의 의미를 갖는다. 우주의 팽창은 먼 은하에서 오는 빛의 ‘적색편이’를 통해 처음 확인되었고, 이는 오늘날 우주의 나이와 구조를 추정하는 핵심 근거가 되었다. 암흑물질 역시 이런 ‘빛의 왜곡’을 통해 간접적으로 추정할 수 있다. 빛의 파장이 늘어난 정도 (z)는 거리 d에 거의 비례하며, 비례상수는 허블 상수 H₀다. 이 단순한 직선 관계는 우주가 정적이지 않고 138억 년 전 빅뱅에서 탄생했음을 시사했다. 오늘날 Ia형 초신성과 우주배경복사를 동시에 측정해 H₀를 재지만 약 9%의 ‘허블 긴장’이 남아 있다. 루빈·로먼·제임스웹 망원경이 이 논쟁을 좁힐 데이터를 준비하는 가운데, 은하들의 희미한 스펙트럼 끝자락은 여전히 우주 연대기를 속삭인다.</p>
+<div class="equation">v = H_0\\,d</div>
+
+<h2>Ⅲ. 암흑물질의 수수께끼 — 중력만 남긴 힌트</h2>
+<p>암흑물질은 스스로 빛을 내거나 반사하지 않지만, 중력 효과를 통해 존재가 드러난다. 은하 회전 곡선을 측정하면 중심부에서 멀어질수록 속도가 줄어들어야 함에도 불구하고, 속도는 거의 일정하게 유지된다. 이는 보이지 않는 질량이 은하를 감싸고 있다는 강력한 증거다. 우주 마이크로파 배경 복사(CMB)의 미세한 온도 요동 역시 암흑물질의 존재를 뒷받침한다.</p>
+<div class="equation">\\Omega_{\\mathrm{c}} h^{2} = 0.120 \\pm 0.001</div>
+
+<h2>Ⅳ. 만남의 현장 — 중력렌즈와 우주배경복사</h2>
+<p>빛은 암흑물질이 만든 시공간 곡률을 따라 굴절된다. 이 ‘중력렌즈 효과’는 보이지 않는 질량 구조를 지도로 만들 수 있게 해 준다. Euclid 망원경은 바로 이 원리를 활용하여 수십억 개 은하의 위치와 왜곡을 분석 중이며, 이는 암흑물질이 실제로 어디에 얼마나 분포해 있는지를 ‘빛의 굴절’을 통해 측정하는 작업이다.</p>
+<div class="equation">\\alpha = \\frac{4GM}{c^{2}b}</div>
+
+<p>2023년 발사된 Euclid 우주망원경은 약한 렌즈 왜곡을 15억 개 은하에서 측정해 암흑물질 지도를 작성 중이다. 첫 번째 데이터 공개만으로도 2600만 개 은하의 분포가 확보됐다.</p>
+
+</div>
+</div>
+
+<script>
+const photos = document.querySelectorAll('.photo');
+const content = document.getElementById('content');
+const progressBar = document.getElementById('progress-bar');
+let lastImageIndex = 0;
+
+function showImage(index) {
+  photos.forEach((img, i) => {
+    img.classList.remove('active');
+    if (i === index) {
+      img.classList.add('active');
+    }
+  });
+}
+
+content.addEventListener('scroll', () => {
+  const scrollTop = content.scrollTop;
+  const scrollHeight = content.scrollHeight - content.clientHeight;
+  const scrollFraction = scrollTop / scrollHeight;
+  const newImageIndex = Math.floor(scrollFraction * photos.length);
+
+  if (newImageIndex !== lastImageIndex && newImageIndex < photos.length) {
+    showImage(newImageIndex);
+    lastImageIndex = newImageIndex;
+  }
+
+  const colorValue = 240 + Math.floor(15 * scrollFraction);
+  document.body.style.background = `linear-gradient(to bottom, #ffffff, rgb(${colorValue}, ${colorValue}, 255))`;
+
+  progressBar.style.width = `${scrollFraction * 100}%`;
+});
+</script>
+
+</body>
+</html>
