@@ -139,12 +139,14 @@ h1, h2, h3, p {
 
 /* 전체 부제목 디자인 2 */
 /* .main-subtitle {
-  font-family: var(--font-title-sub);
-  font-weight: 500;
+  display: block;
+  font-family: var(--font-main);
   font-size: 1.4rem;
-  letter-spacing: 0px;
-  text-align: center;
-  color: var(--color-main-sub);
+  text-align:center;
+  font-weight: 500;
+  color:#999;
+  border-bottom: 4px groove var(--color-main);
+  padding-bottom: 0.5rem;
 } */
 
 
