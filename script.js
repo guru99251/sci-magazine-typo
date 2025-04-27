@@ -1,23 +1,28 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const rightPane = document.querySelector('.right');
-  const leftPane  = document.querySelector('.left');
-  const sections  = document.querySelectorAll('.section');
+const photos = document.querySelectorAll('.photo');
+const content = document.getElementById('content');
 
-  // 초기 배경 설정
-  const firstImg = sections[0].dataset.image;
-  leftPane.style.backgroundImage = `url('/src/${firstImg}')`;
+let lastImageIndex = 0;
 
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const img = entry.target.dataset.image;
-        leftPane.style.backgroundImage = `url('/src/${img}')`;
-      }
-    });
-  }, {
-    root: rightPane,
-    threshold: 0.5
+function showImage(index) {
+  photos.forEach((img, i) => {
+    img.classList.remove('active');
+    if (i === index) {
+      img.classList.add('active');
+    }
   });
+}
 
-  sections.forEach(sec => io.observe(sec));
+content.addEventListener('scroll', () => {
+  const scrollTop = content.scrollTop;
+  const scrollHeight = content.scrollHeight - content.clientHeight;
+  const scrollFraction = scrollTop / scrollHeight;
+  const newImageIndex = Math.floor(scrollFraction * photos.length);
+
+  if (newImageIndex !== lastImageIndex && newImageIndex < photos.length) {
+    showImage(newImageIndex);
+    lastImageIndex = newImageIndex;
+  }
+
+  const colorValue = 240 + Math.floor(15 * scrollFraction);
+  document.body.style.background = `linear-gradient(to bottom, #ffffff, rgb(${colorValue}, ${colorValue}, 255))`;
 });
