@@ -470,82 +470,57 @@ h1, h2, h3, p {
 }
 
 
-/* 적응형 디자인 */
-/* 데스크탑 레이아웃 */
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  .container {
-    display: flex;
-  }
-  .left {
-    flex: 1;
-    background-size: cover;
-    background-position: center;
-  }
-  .right {
-    flex: 1;
-    padding: 2vw;
-    overflow-y: auto;
-  }
-
+/* 반응형 디자인 */
+@media (min-width:1024px) {
+  body { display:flex; justify-content:center; align-items:center; height:100vh; }
+  .container { display:flex; }
+  .left { flex:1; background-size:cover; background-position:center; }
+  .right { flex:1; padding:2vw; overflow-y:auto; }
+}
+@media (min-width:768px) and (max-width:1023px) {
+  body { display:block; }
+  .container { display:flex; flex-direction:column; height:auto; }
+  .left { width:100%; height:40vh; background-size:cover; background-position:center; }
+  .right { width:100%; padding:4vw; }
+  h1 { font-size:2rem; }
+  h2 { font-size:1.5rem; }
+  h3 { font-size:1.125rem; }
+  p  { font-size:0.95rem; }
+}
+@media (max-width:767px) {
+  body { display:block; }
+  .container { display:block; }
+  .left { width:100%; height:30vh; background-size:cover; background-position:center; }
+  .right { width:100%; padding:5vw; }
+  h1 { font-size:1.5rem; }
+  h2 { font-size:1.25rem; }
+  h3 { font-size:1rem; }
+  p  { font-size:0.875rem; }
 }
 
-/* 태블릿 레이아웃 */
-@media (min-width: 768px) and (max-width: 1023px) {
-  body {
-    display: block;
-    padding: 2vh 0;
-  }
 
-  .container {
-    display: flex;
-    flex-direction: column;
-    height: auto;
-  }
-  .left {
-    width: 100%;
-    height: 40vh;
-    background-size: cover;
-    background-position: center;
-  }
-  .right {
-    width: 100%;
-    padding: 4vw;
-  }
-  /* 폰트 크기 조정 */
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.5rem; }
-  h3 { font-size: 1.125rem; }
-  p  { font-size: 0.95rem; }
+/* Portrait: 고정 상단 배치 */
+@media (orientation:portrait) {
+  .photo-container { position:fixed !important; top:0; left:0; width:100% !important; z-index:1000; }
+  .paragraph-container { margin-top:30vh !important; }
 }
-
-/* 모바일 레이아웃 (<768px) */
-@media (max-width: 767px) {
-  body {
-    display: block;
-    padding: 2vh 0;
-  }
-  .container {
-    display: block;
-  }
-  .left {
-    width: 100%;
-    height: 30vh;
-    background-size: cover;
-    background-position: center;
-  }
-  .right {
-    width: 100%;
-    padding: 5vw;
-  }
-  /* 폰트 크기 축소 */
-  h1 { font-size: 1.5rem; }
-  h2 { font-size: 1.25rem; }
-  h3 { font-size: 1rem; }
-  p  { font-size: 0.875rem; }
+@media (orientation:portrait) and (max-width:767px) {
+  .photo-container { margin:0vh 0vh 0vh 0vh !important; width:100% !important; height:30vh !important; font-size: 13px !important; }
+  .paragraph-container { margin:30vh 0vh 0vh 0vh !important; width: 100%; }
 }
+@media (orientation:portrait) and (min-width:768px) and (max-width:1023px) {
+  .photo-container { margin:0vh 0vh 0vh 0vh !important; width:100% !important; height:40vh !important;}
+  .paragraph-container {
+    margin: 40vh auto 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
+@media (orientation:portrait) and (min-width:1024px) {
+  .photo-container { margin:0vh 0vh 0vh 0vh !important; width:100% !important; height:40vh !important; }
+  .paragraph-container {
+    margin: 40vh auto 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+} 
