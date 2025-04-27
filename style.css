@@ -157,9 +157,6 @@
 
 
 
-
-
-
 :root {
   /* 컬러 팔레트 */
   --color-bg: #ffffff;
@@ -508,7 +505,7 @@ h1, h2, h3, p {
   .photo-container { margin:0vh 0vh 0vh 0vh !important; width:100% !important; height:30vh !important; font-size: 13px !important; }
   .paragraph-container { margin:30vh 0vh 0vh 0vh !important; width: 100%; }
 }
-@media (orientation:portrait) and (min-width:768px) and (max-width:1023px) {
+@media (orientation:portrait) and (min-width:768px) and (max-width:1024px) {
   .photo-container { margin:0vh 0vh 0vh 0vh !important; width:100% !important; height:40vh !important;}
   .paragraph-container {
     margin: 40vh auto 0 !important;
@@ -516,7 +513,7 @@ h1, h2, h3, p {
     max-width: none !important;
   }
 }
-@media (orientation:portrait) and (min-width:1024px) {
+@media (orientation:portrait) and (min-width:1025px) {
   .photo-container { margin:0vh 0vh 0vh 0vh !important; width:100% !important; height:40vh !important; }
   .paragraph-container {
     margin: 40vh auto 0 !important;
@@ -524,3 +521,24 @@ h1, h2, h3, p {
     max-width: none !important;
   }
 } 
+
+
+/* Landscape */
+@media (orientation:landscape) {
+  .photo-container {
+    /* 원래 상대 위치로 복원 */
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    /* portrait에서 강제로 바꾼 사이즈 제거 */
+    width: auto !important;
+    height: auto !important;
+    /* 기본 margin 복원 */
+    margin: 20px auto !important;
+    z-index: auto !important;
+  }
+  .paragraph-container {
+    /* portrait에서 건너탄 여백 제거 */
+    margin-top: 0 !important;
+  }
+}
