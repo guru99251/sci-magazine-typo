@@ -203,15 +203,30 @@ h1, h2, h3, p {
   margin-bottom: 100px;
 }
 
+/* 1) .formula 컨테이너 자체 크기 설정 */
 .formula {
   display: block;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 0.5rem;         /* 원하는 크기로 */
+  line-height: 1.2;        /* 원하는 줄 높이로 */
+  padding: 10px;
   border: var(--border-box);
   border-radius: 10px;
-  padding: 10px;
-  margin: 0px 0px 20px 0px;
+  margin-bottom: 20px;
 }
+
+/* 2) MathJax 컨테이너에 강제 상속 */
+.formula mjx-container.MathJax {
+  font-size: inherit !important;
+  line-height: inherit !important;
+}
+
+/* 3) mjx-chtml에도 상속 적용 */
+.formula mjx-container .mjx-chtml {
+  font-size: inherit !important;
+  line-height: inherit !important;
+}
+
 
 .image-row {
   display: flex;
@@ -252,6 +267,8 @@ h1, h2, h3, p {
 .highlight {
   background-color: var(--color-text-highlight);
 }
+
+
 
 /* 데스크탑 레이아웃 */
 @media (min-width: 1024px) {
