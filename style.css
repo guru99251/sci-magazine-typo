@@ -207,7 +207,7 @@ h1, h2, h3, p {
 .formula {
   display: block;
   text-align: center;
-  font-size: 0.5rem;         /* 원하는 크기로 */
+  font-size: 1rem;         /* 원하는 크기로 */
   line-height: 1.2;        /* 원하는 줄 높이로 */
   padding: 10px;
   border: var(--border-box);
