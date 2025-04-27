@@ -489,16 +489,13 @@ h1, h2, h3, p {
     padding: 2vw;
     overflow-y: auto;
   }
-
 }
 
 /* 태블릿 레이아웃 */
 @media (min-width: 768px) and (max-width: 1023px) {
   body {
     display: block;
-    padding: 2vh 0;
   }
-
   .container {
     display: flex;
     flex-direction: column;
@@ -509,6 +506,7 @@ h1, h2, h3, p {
     height: 40vh;
     background-size: cover;
     background-position: center;
+    margin: 0 auto;
   }
   .right {
     width: 100%;
