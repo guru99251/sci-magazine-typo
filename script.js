@@ -1,32 +1,48 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const content      = document.getElementById('content');       // 우측 본문 스크롤 영역
-  const photoList    = document.querySelector('.photo-list');    // 사진 리스트 wrapper
-  const photoText    = document.getElementById('photo-text');    // 사진 캡션 텍스트
-  const sections     = Array.from(content.querySelectorAll('.section'));
-  const containerH   = document.querySelector('.photo-container').clientHeight;
+  const content     = document.getElementById('content');
+  const photoList   = document.querySelector('.photo-list');
+  const photoText   = document.getElementById('photo-text');
+  const sections    = Array.from(content.querySelectorAll('.section'));
+  const photoContainer = document.querySelector('.photo-container');
 
-  // 옵저버 설정: 챕터(.section)가 50% 보일 때마다 콜백
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
+  // 컨테이너 높이 계산
+  const getContainerHeight = () => photoContainer.clientHeight;
+  let containerH = getContainerHeight();
 
-      const idx = sections.indexOf(entry.target);
-      // 사진 리스트를 딱 idx 위치로 이동
-      photoList.style.transform = `translateY(-${idx * containerH}px)`;
+  // thresholds: 각 섹션의 offsetTop 값
+  const getThresholds = () => sections.map(sec => sec.offsetTop);
+  let thresholds = getThresholds();
 
-      // 텍스트 업데이트
-      photoText.textContent = entry.target.dataset.text;
-    });
-  }, {
-    root: content,
-    threshold: 0.5
+  // 리사이즈, MathJax 완료 등으로 레이아웃 변경 시 재계산
+  const recalc = () => {
+    containerH = getContainerHeight();
+    thresholds = getThresholds();
+  };
+  window.addEventListener('resize', recalc);
+  window.addEventListener('load', recalc);
+  if (window.MathJax) MathJax.startup.promise.then(recalc);
+
+  // 스크롤에 맞춰 idx 결정 및 snap
+  content.addEventListener('scroll', () => {
+    // 최신 offsets 사용
+    thresholds = getThresholds();
+    const scrollY = content.scrollTop;
+    let idx = 0;
+    for (let i = 0; i < thresholds.length; i++) {
+      if (scrollY >= thresholds[i]) idx = i;
+      else break;
+    }
+    // 마지막 섹션까지 도달 시 마지막 이미지 보장
+    if (scrollY + content.clientHeight >= content.scrollHeight) {
+      idx = sections.length - 1;
+    }
+
+    // 사진 스냅
+    photoList.style.transform = `translateY(-${idx * containerH}px)`;
+    photoText.textContent = sections[idx].dataset.text;
   });
 
-  sections.forEach(sec => observer.observe(sec));
-
-  // 초기 상태: 첫 챕터
-  if (sections[0]) {
-    photoList.style.transform = `translateY(0)`;
-    photoText.textContent     = sections[0].dataset.text;
-  }
+  // 초기 트리거 (모든 로드 후)
+  window.addEventListener('load', () => content.dispatchEvent(new Event('scroll')));
+  if (window.MathJax) MathJax.startup.promise.then(() => content.dispatchEvent(new Event('scroll')));
 });
