@@ -31,6 +31,15 @@ document.addEventListener("DOMContentLoaded", () => {
       photo.style.opacity = photo.src.includes(imageFile) ? "1" : "0";
     });
     photoText.textContent = text;
+
+    const activePhoto = Array.from(photos)
+    .find(p => p.src.includes(imageFile));
+    if (activePhoto) {
+      activePhoto.classList.add("animate");
+      activePhoto.addEventListener("animationend", () => {
+      activePhoto.classList.remove("animate");
+      }, { once: true });
+    }
   }
 
   // 5) IntersectionObserver로 챕터가 반쯤 보일 때마다 사진 전환
