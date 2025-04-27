@@ -166,7 +166,7 @@ h1, h2, h3, p {
 
 .sub-topic {
   font-family: var(--font-title-sub);
-  font-weight: 500;
+  font-weight: 600;
   font-size: 22px;
   letter-spacing: 0px;
   color: var(--color-main);
@@ -207,7 +207,7 @@ h1, h2, h3, p {
 .formula {
   display: block;
   text-align: center;
-  font-size: 1rem;         /* 원하는 크기로 */
+  font-size: 1.2rem;         /* 원하는 크기로 */
   line-height: 1.2;        /* 원하는 줄 높이로 */
   padding: 10px;
   border: var(--border-box);
