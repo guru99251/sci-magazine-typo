@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+
+/* 리셋 */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* 배경과 폰트 */
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #000; /* 검정 배경 */
+  color: #fff; /* 흰색 글씨 */
+}
+
+/* 타이포 위계 + line-height 수정 */
+h1, h2, h3, p {
+  margin: 0;
+  line-height: 1.8; /* ✨ 요청: 행간 넓힘 (180%) */
+}
+
+/* 제목 스타일 */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.8; /* ✨ */
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.25px;
+  line-height: 1.8; /* ✨ */
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.8; /* ✨ */
+}
+
+/* 본문 스타일 */
+p {
+  font-size: 1rem;
+  font-weight: 300; /* ✨ 요청: 본문 더 얇게 */
+  letter-spacing: 0.5px;
+  line-height: 1.8; /* ✨ */
+}
+
+/* 보조 제목 */
+p.sub-title {
+  font-size: 1rem;
+  font-weight: 300; /* 보조 텍스트도 얇게 */
+  color: #ccc;
+}
+
+/* 수학 공식 (formula) */
+p.formula {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  color: #00ffff;
+  text-align: center; /* ✨ 요청: 가운데 정렬 */
+  margin: 1rem 0;
+}
+
+/* 레이아웃 */
+.container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.left {
+  width: 50%;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 1s ease-in-out, opacity 1s ease-in-out;
+  opacity: 1;
+}
+
+.right {
+  width: 50%;
+  padding: 2.5rem;
+  overflow-y: auto;
+}
+
+.section {
+  margin-bottom: 4rem;
+}
+
+/* 이미지와 인용문 스타일 (참고) */
+.image-box img, .image-box video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.quote {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #555;
+  border-left: 4px solid #999;
+  padding-left: 16px;
+  margin: 1rem 0;
+}
+
+.highlight {
+  background-color: #f0f0f0;
+  padding: 15px;
+  border-left: 5px solid #ccc;
+  font-size: 0.95rem;
+  margin: 10px 0;
+}

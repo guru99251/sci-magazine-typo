@@ -1,0 +1,106 @@
+/* 타이포.CSS */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400&family=Noto+Serif+KR:wght@700&display=swap');
+
+
+/* 기본타이포세팅*/
+    body {
+        font-family: 'IBM Plex Sans KR', sans-serif;
+        font-size: 18pt;
+        line-height: 1.8;
+        color: #111111;
+      }
+  
+  /* title-제목*/
+  h1 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 36px;
+      font-weight: 700; /* bold */
+      color: #222222;
+  
+      max-width: 40em;
+      margin-bottom: 0.2em;
+      text-align: left;
+      margin-bottom: 1em;
+  }
+  
+   /* 소제목 */
+  h2 {
+      font-size: 18pt;
+      font-weight: 700; /* bold */ 
+  }
+  
+   /* 소제목-큰글씨 */
+   h3 {
+      font-size: 24pt; 
+      font-weight: 700; /* bold */ 
+      color: #2C3E50; 
+  }
+  
+  /* 소제목-작은글씨*/
+  .sub-title{
+      font-weight: 500; 
+      font-size: 13.5pt; 
+      margin-bottom: 8em;  
+  }
+  
+  /* 수식*/
+  .formula {
+      font-size: 15pt;
+      color: #111111;
+      margin: 0.5em 0;}
+  
+  
+  
+      /* 전체레이아웃*/
+      .container {
+          display: flex; 
+          max-width: 1000px;
+          margin: 40px auto; /* 가운데 정렬 */
+          background: white;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+  
+      /* 박스 디자인 */
+      .image-section {
+          flex: 1;
+          overflow: hidden;}
+      .image-section img {
+          width: 99%;
+          max-height: auto;
+          object-fit: cover;
+      }
+      .text-section {
+          flex: 1;
+          overflow-y: auto;
+          overflow-x: hidden;
+          max-width: 100%; 
+          max-height: 500px;
+  
+          padding: 30px;
+          border: 1px solid #ccc;
+          background-color: #f9f9f9;
+      }
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
