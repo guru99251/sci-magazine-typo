@@ -1,30 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const content = document.getElementById('content');              // 스크롤 대상
-  const photoList = document.querySelector('.photo-list');         // 움직일 리스트
-  const photoCount = photoList.children.length;
-  const containerHeight = document.querySelector('.photo-container').clientHeight;
-  const listHeight = containerHeight * photoCount;
+  const content      = document.getElementById('content');       // 우측 본문 스크롤 영역
+  const photoList    = document.querySelector('.photo-list');    // 사진 리스트 wrapper
+  const photoText    = document.getElementById('photo-text');    // 사진 캡션 텍스트
+  const sections     = Array.from(content.querySelectorAll('.section'));
+  const containerH   = document.querySelector('.photo-container').clientHeight;
 
-  // 스크롤 시 실행
-  content.addEventListener('scroll', () => {
-    const scrollTop = content.scrollTop;
-    const maxScroll = content.scrollHeight - content.clientHeight;
-    const ratio = scrollTop / maxScroll;          // 0 ~ 1
+  // 옵저버 설정: 챕터(.section)가 50% 보일 때마다 콜백
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
 
-    // translateY: 리스트 전체 높이 - 컨테이너 높이 만큼 움직임
-    const moveY = (listHeight - containerHeight) * ratio;
-    photoList.style.transform = `translateY(-${moveY}px)`;
+      const idx = sections.indexOf(entry.target);
+      // 사진 리스트를 딱 idx 위치로 이동
+      photoList.style.transform = `translateY(-${idx * containerH}px)`;
 
-    // 현재 보여야 할 섹션 인덱스로 텍스트 업데이트 (선택사항)
-    const sections = content.querySelectorAll('.section');
-    const idx = Math.min(
-      photoCount - 1,
-      Math.floor(ratio * photoCount)
-    );
-    const { text } = sections[idx].dataset;
-    document.getElementById('photo-text').textContent = text;
+      // 텍스트 업데이트
+      photoText.textContent = entry.target.dataset.text;
+    });
+  }, {
+    root: content,
+    threshold: 0.5
   });
 
-  // 초기 위치 세팅
-  content.dispatchEvent(new Event('scroll'));
+  sections.forEach(sec => observer.observe(sec));
+
+  // 초기 상태: 첫 챕터
+  if (sections[0]) {
+    photoList.style.transform = `translateY(0)`;
+    photoText.textContent     = sections[0].dataset.text;
+  }
 });

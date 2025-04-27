@@ -243,7 +243,9 @@ h1, h2, h3, p {
   top: 0;
   left: 0;
   width: 100%;
-  transition: transform 0.5s ease-out;
+
+  /* 부드럽지만 짧게, 챕터마다 튕기듯 넘어가도록 0.3s로 설정 */
+  transition: transform 0.3s ease-out;
 }
 
 .photo-list .photo {
