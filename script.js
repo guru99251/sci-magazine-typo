@@ -1,64 +1,30 @@
-// script.js
 document.addEventListener("DOMContentLoaded", () => {
-  // 1) 스크롤 대상과 챕터(.section)들 가져오기
-  const paragraphContainer = document.getElementById("content");           // .paragraph-container (스크롤 컨테이너) :contentReference[oaicite:0]{index=0}&#8203;:contentReference[oaicite:1]{index=1}
-  const sections = paragraphContainer.querySelectorAll(".section");        // 각 챕터 섹션 :contentReference[oaicite:2]{index=2}&#8203;:contentReference[oaicite:3]{index=3}
+  const content = document.getElementById('content');              // 스크롤 대상
+  const photoList = document.querySelector('.photo-list');         // 움직일 리스트
+  const photoCount = photoList.children.length;
+  const containerHeight = document.querySelector('.photo-container').clientHeight;
+  const listHeight = containerHeight * photoCount;
 
-  // 2) 사진 컨테이너, 사진들, 텍스트 요소 가져오기
-  const photoContainer = document.querySelector(".photo-container");       // .photo-container :contentReference[oaicite:4]{index=4}&#8203;:contentReference[oaicite:5]{index=5}
-  const photos = photoContainer.querySelectorAll("img.photo");             // 내부 <img class="photo">들 :contentReference[oaicite:6]{index=6}&#8203;:contentReference[oaicite:7]{index=7}
-  const photoText = document.getElementById("photo-text");                 // 사진 위에 표시할 텍스트 :contentReference[oaicite:8]{index=8}&#8203;:contentReference[oaicite:9]{index=9}
+  // 스크롤 시 실행
+  content.addEventListener('scroll', () => {
+    const scrollTop = content.scrollTop;
+    const maxScroll = content.scrollHeight - content.clientHeight;
+    const ratio = scrollTop / maxScroll;          // 0 ~ 1
 
-  // 3) 사진들을 겹치고 숨길 수 있게 스타일 초기화
-  photoContainer.style.position = "relative";
-  photos.forEach(photo => {
-    Object.assign(photo.style, {
-      position:   "absolute",
-      top:        "0",
-      left:       "0",
-      width:      "100%",
-      height:     "100%",
-      objectFit:  "cover",
-      transition: "opacity 0.5s ease",
-      opacity:    "0"
-    });
+    // translateY: 리스트 전체 높이 - 컨테이너 높이 만큼 움직임
+    const moveY = (listHeight - containerHeight) * ratio;
+    photoList.style.transform = `translateY(-${moveY}px)`;
+
+    // 현재 보여야 할 섹션 인덱스로 텍스트 업데이트 (선택사항)
+    const sections = content.querySelectorAll('.section');
+    const idx = Math.min(
+      photoCount - 1,
+      Math.floor(ratio * photoCount)
+    );
+    const { text } = sections[idx].dataset;
+    document.getElementById('photo-text').textContent = text;
   });
 
-  // 4) 활성 챕터에 맞춰 사진과 텍스트를 전환하는 함수
-  function updatePhoto(imageFile, text) {
-    photos.forEach(photo => {
-      // <img src="/static/chapterX.jpg"> 형태이므로 includes()로 매칭
-      photo.style.opacity = photo.src.includes(imageFile) ? "1" : "0";
-    });
-    photoText.textContent = text;
-
-    const activePhoto = Array.from(photos)
-    .find(p => p.src.includes(imageFile));
-    if (activePhoto) {
-      activePhoto.classList.add("animate");
-      activePhoto.addEventListener("animationend", () => {
-      activePhoto.classList.remove("animate");
-      }, { once: true });
-    }
-  }
-
-  // 5) IntersectionObserver로 챕터가 반쯤 보일 때마다 사진 전환
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const { image, text } = entry.target.dataset;
-        updatePhoto(image, text);
-      }
-    });
-  }, {
-    root:       paragraphContainer,  // 우측 스크롤 영역을 기준으로 관찰 :contentReference[oaicite:10]{index=10}&#8203;:contentReference[oaicite:11]{index=11}
-    threshold:  0.5                  // 섹션이 50% 보였을 때 트리거
-  });
-
-  sections.forEach(sec => observer.observe(sec));
-
-  // 6) 초기 로드 시 첫 챕터 이미지 표시
-  if (sections[0]) {
-    updatePhoto(sections[0].dataset.image, sections[0].dataset.text);
-  }
+  // 초기 위치 세팅
+  content.dispatchEvent(new Event('scroll'));
 });
