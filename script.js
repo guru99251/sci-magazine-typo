@@ -69,4 +69,26 @@ document.addEventListener("DOMContentLoaded", () => {
       : photoText.textContent;
     updatePhoto(imageFile, text);
   }
+
+  // 스와이프
+  let startX = 0;
+  let endX = 0;
+  const swipeThreshold = 100; // 100px 이상 스와이프해야 인정
+
+  document.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+  });
+
+  document.addEventListener('touchend', (e) => {
+    endX = e.changedTouches[0].clientX;
+    handleSwipe();
+  });
+
+  function handleSwipe() {
+    const deltaX = endX - startX;
+    if (deltaX > swipeThreshold) {
+      // 오른쪽으로 스와이프한 경우
+      window.location.href = "next-page.html";
+    }
+  }
 });
