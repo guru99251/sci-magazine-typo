@@ -316,7 +316,7 @@ h1, h2, h3, p {
   display: block;
   width: 80%;
   text-align: center; /* 챕터 제목 정렬 */
-  font-weight: 500;
+  font-weight: 600;
   font-size: 20px;
   letter-spacing: 0px;
   text-transform: none;

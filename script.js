@@ -58,7 +58,15 @@ document.addEventListener("DOMContentLoaded", () => {
   sections.forEach(sec => observer.observe(sec));
 
   // 6) 초기 로드 시 첫 챕터 이미지 표시
-  if (sections[0]) {
-    updatePhoto(sections[0].dataset.image, sections[0].dataset.text);
+  const initialPhoto = Array.from(photos).find(p => p.classList.contains('active'));
+  if (initialPhoto) {
+    const imageFile = initialPhoto.src.split('/').pop();
+    const matchedSection = Array.from(sections).find(
+      sec => sec.dataset.image === imageFile
+    );
+    const text = matchedSection
+      ? matchedSection.dataset.text
+      : photoText.textContent;
+    updatePhoto(imageFile, text);
   }
 });
