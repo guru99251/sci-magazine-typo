@@ -91,4 +91,12 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "next-page.html";
     }
   }
+
+  // floating 버튼 클릭 리스너
+  const nextBtn = document.getElementById("next-btn");
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      window.location.href = "next-page.html";
+    });
+  }
 });

@@ -1,4 +1,4 @@
-from flask import Flask, send_from_directory, jsonify
+from flask import Flask, send_from_directory
 import os
 
 app = Flask(__name__)
@@ -6,6 +6,10 @@ app = Flask(__name__)
 @app.route('/')
 def serve_index():
     return send_from_directory('.', 'index.html')
+
+@app.route('/next-page.html')
+def serve_next():
+    return send_from_directory('.', 'next-page.html')
 
 @app.route('/style.css')
 def serve_css():
